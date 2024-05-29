@@ -1,0 +1,41 @@
+body{
+    text-align:center; 
+    background-color:#190185;
+}
+
+h1{
+    color:#fcfcfc;
+}
+
+h2{
+    display:inline-block;
+    margin:2px 5px 5px 2px;
+    padding:20px; 
+}
+
+a{
+    outline-color: transparent;
+}
+
+a:link{
+    color:#ffd900;
+}
+
+a:visited{
+    color: #c37f00;
+}
+
+a:focus{
+    text-decoration:none;
+    background: #613ff5;
+}
+
+a:hover{
+    text-decoration:none;
+    background: #613ff5;
+}
+
+a:active{
+    background: #ffffff;
+    color: #00d9ff;
+}
