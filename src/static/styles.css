@@ -1,13 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+
+*{
+    box-sizing:border-box;
+}
+
+.dancing-script-tlb{
+    font-family: "Dancing Script", cursive; 
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style:oblique; 
+}
 body{
+    min-height: 100vh; 
+    margin:0; 
     text-align:center; 
-    background-color:#190185;
+    background: linear-gradient( #0003a5 40%, #00b7ff, #ffa600 100%);
+    background-size: cover; 
 }
 
 h1{
-    color:#fcfcfc;
+    margin: 15px auto;
+    max-width:250px;
+    max-height:200px;
+    background-color:#190185;
+    background-image: url(photos/logo_placeholder.jpg);
+    background-size: 315px;
+    background-origin:border-box;
+    background-position-y: -10px;
+    background-position-x: -30px;
+    background-blend-mode: screen;
+    overflow:hidden;
+    font-family: Dancing Script;
+    font-size: 300%;
+    padding: 0px 0 60px 0px; 
+    border-style: solid;
+    border-radius: 20px;
+    border-image:url(photos/feather-pattern-round.png)100 90;
+    border-image-width: 25px;
+    border-image-repeat:round; 
+    border-image-outset:15px;
+    color:#ffa600;
 }
 
+
 h2{
+    
     display:inline-block;
     margin:2px 5px 5px 2px;
     padding:20px; 
