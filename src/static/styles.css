@@ -96,10 +96,9 @@ a:active{
 }
 
 .catalog{
-    border: 5px solid black; 
     display: flex; 
-    flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start; 
     justify-content: center; 
     align-items: center;
     gap: 16px; 
@@ -108,25 +107,32 @@ a:active{
     padding: 20px 10px;
 }
 
-.catalog img{
+.catalog-item img{
     width: 100%;
     height: auto; 
     object-fit:cover;
     display: block; 
 }
 
-.catalog a{
+.catalog-item{
+    display:flex;
+    flex-direction: column; 
     box-sizing:border-box;
     justify-content: center;
-    align-items: center;
-    display:block; 
+    align-items: center; 
     max-width: 30%; 
     overflow: hidden;
-    aspect-ratio: 1 / 1;
+    width: calc(25%);
     transition: transform 0.2s ease;
 }
 
-.catalog a:hover{
+.catalog-item:hover{
     transform: scale(1.1);
+}
+
+.catalog-item p{
+    color:#ffffff;
+    justify-content:end;
+    margin: 8px 0 0 0;
 }
 
