@@ -13,6 +13,7 @@ nodejs==0.1.1
 npm==0.1.1
 optional-django==0.1.0
 SQLAlchemy==2.0.29
+square==0.0.3
 typing_extensions==4.10.0
 Werkzeug==3.0.1
 WTForms==3.1.2

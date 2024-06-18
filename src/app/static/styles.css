@@ -136,3 +136,18 @@ a:active{
     margin: 8px 0 0 0;
 }
 
+.orderform{
+    border:none; 
+    align-items:flex-start;
+    margin:20px 400px; 
+    gap:20px; 
+    display:flex;
+    flex-direction: column; 
+    justify-content:center;
+    color:#ff8800;
+}
+
+
+
+
+
