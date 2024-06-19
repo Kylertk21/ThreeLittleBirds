@@ -8,10 +8,14 @@ def index():
 @app.route('/marketplace')
 def marketplace():
     catalog_items = [
-        {'image':'../static/photos/logo_placeholder.jpg', 'description':'Item 1 Description', 'link':'/orderform'}
+        {'image':'../static/photos/logo_placeholder.jpg', 'description':'Item', 'link':'/orderform'}
     ]
 
     return render_template('marketplace.html', catalog_items=catalog_items)
+
+@app.route('/add_item')
+def add_item():
+    return render_template('add_item.html')
 
 @app.route('/orderform')
 def orderform():

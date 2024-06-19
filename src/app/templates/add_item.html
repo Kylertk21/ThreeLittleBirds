@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block main %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Item</title>
+    </head>
+    <body>
+        <h1>Add Items To Catalog</h1>
+        <form method="post">
+            <fieldset class ="add_item">
+                <label for="item-name">Item Name:</label>
+                <label for="quantity">Quantity:</label>
+                <label for="description">Description</label>
+                <label for="price">Price</label>
+            </fieldset>
+        </form>
+    </body>
+</html>
+{% endblock %}

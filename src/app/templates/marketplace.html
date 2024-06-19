@@ -6,8 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Three Little Birds - Marketplace</title>
-        <link rel="stylesheet" href="../static/styles.css">
+        <title>Marketplace</title>
         <style>
             .head{
                 height:150px;
@@ -19,7 +18,7 @@
         <body>
             <div class="head">
             <h1 class="markettitle">Marketplace</h1>
-            <h2><a href="index.html">Home</a></h2>
+            <h2><a href="{{ url_for('index') }}">Home</a></h2>
             </div>
         <div class="catalog">
             {% for item in catalog_items %}
