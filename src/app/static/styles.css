@@ -44,13 +44,32 @@ body{
 }
 
 .head{
+    display:flex; 
+    flex-wrap: wrap;
+    flex-direction: column; 
     border:2px dashed #ff8800;
     width: 800px;
     height: 300px; 
     margin: 10px auto; 
-    padding: 10px 20px;  
+    padding: 10px 20px;
+    align-items: center;  
 }
 
+.head-btn{
+    width: 100%;
+    margin: auto; 
+    display: flex; 
+    justify-content: center;
+    gap: 5px; 
+}
+button{
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    background-color:#ff8800;
+    border:2px solid #ffd900;
+    border-radius: 5px;
+}
 h1{
     font-family: Dancing Script;
     color:#ff8800;

@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block main %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,33 +17,20 @@
         </style>
     </head>
         <body>
-        
             <div class="head">
             <h1 class="markettitle">Marketplace</h1>
             <h2><a href="index.html">Home</a></h2>
             </div>
         <div class="catalog">
+            {% for item in catalog_items %}
             <div class="catalog-item">
-                <a href="orderform.html"><img src="../static/photos/logo_placeholder.jpg" alt="catalog img 1"></a>
-                <p class="item">Item Description</p>
+                <a href="{{ item.link }}"><img src="{{ url_for('static', filename=item.image) }}" alt="catalog img"></a>
+                <p class="item">{{ item.description }}</p>
             </div>
-            <div class="catalog-item">
-                <a href="orderform.html"><img src="../static/photos/logo_placeholder.jpg" alt="catalog img 1"></a>
-                <p class="item">Item Description</p>
-            </div>
-            <div class="catalog-item">
-                <a href="orderform.html"><img src="../static/photos/logo_placeholder.jpg" alt="catalog img 1"></a>
-                <p class="item">Item Description</p>
-            </div>
-            <div class="catalog-item">
-                <a href="orderform.html"><img src="../static/photos/logo_placeholder.jpg" alt="catalog img 1"></a>
-                <p class="item">Item Description</p>
-            </div>
-            <div class="catalog-item">
-                <a href="orderform.html"><img src="../static/photos/logo_placeholder.jpg" alt="catalog img 1"></a>
-                <p class="item">Item Description</p>
-            </div>
+            {% endfor %}
         </div>
         </body>
 
 </html>
+
+{% endblock %}
