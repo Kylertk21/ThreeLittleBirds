@@ -167,7 +167,17 @@ a:active{
 }
 
 .add_item{
+    display:flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content:center;
+    padding-left: 35%;
     color:#ff8800;
+    font-size:large;
+}
+
+.add_item label{
+    margin:10px;
 }
 
 
