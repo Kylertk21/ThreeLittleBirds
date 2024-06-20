@@ -5,16 +5,18 @@
     <head> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Create Item</title>
+        <title>Add Items To Catalog</title>
     </head>
     <body>
         <h1>Add Items To Catalog</h1>
-        <form method="post">
+        <form action="{{ url_for('add_item') }}" method="POST">
             <fieldset class ="add_item">
-                <label for="item-name">Item Name:</label>
-                <label for="quantity">Quantity:</label>
-                <label for="description">Description:</label>
-                <label for="price">Price:</label>
+                {{form.csrf_token}}
+                {{form.name.label}} {{form.name}}
+                {{form.quantity.label}} {{form.quantity}}
+                {{form.description.label}} {{form.description}}
+                {{form.price.label}} {{form.price}}
+                {{form.submit}}
             </fieldset>
         </form>
     </body>

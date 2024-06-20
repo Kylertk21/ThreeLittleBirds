@@ -1,5 +1,8 @@
-from . import app
-from flask import render_template
+from . import app, db
+from flask import render_template, url_for, request, flash
+from .forms import ItemForm
+from .models import Item
+import uuid
 
 @app.route('/')
 def index():
@@ -9,13 +12,26 @@ def index():
 def marketplace():
     catalog_items = [
         {'image':'../static/photos/logo_placeholder.jpg', 'description':'Item', 'link':'/orderform'}
-    ]
-
+                    ]
     return render_template('marketplace.html', catalog_items=catalog_items)
 
-@app.route('/add_item')
+@app.route('/add_item', methods=['GET','POST'])
 def add_item():
-    return render_template('add_item.html')
+    form = ItemForm()
+    if request.method =='POST':
+        if form.validate_on_submit():
+            item = Item(
+                id=str(uuid.uuid4()),
+                name=form.name.data,
+                quantity=form.quantity.data,
+                description=form.description.data,
+                price=form.price.data
+            )
+            db.session.add(item)
+        flash("Item added successfully")
+    else: flash(form.errors, 'error')
+    db.session.commit()
+    return render_template('add_item.html', form=form)
 
 @app.route('/orderform')
 def orderform():
