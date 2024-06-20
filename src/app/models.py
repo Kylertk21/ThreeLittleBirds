@@ -14,3 +14,4 @@ class Item(db.Model):
     quantity = db.Column('Quantity', db.Integer)
     description = db.Column('Description', db.String)
     price = db.Column('Price', db.String)
+    image = db.Column("Image", db.String, default='No Image')

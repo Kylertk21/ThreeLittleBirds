@@ -10,10 +10,8 @@ def index():
 
 @app.route('/marketplace')
 def marketplace():
-    catalog_items = [
-        {'image':'../static/photos/logo_placeholder.jpg', 'description':'Item', 'link':'/orderform'}
-                    ]
-    return render_template('marketplace.html', catalog_items=catalog_items)
+    items = Item.query.all()
+    return render_template('marketplace.html', items=items)
 
 @app.route('/add_item', methods=['GET','POST'])
 def add_item():
@@ -26,7 +24,14 @@ def add_item():
                 quantity=form.quantity.data,
                 description=form.description.data,
                 price=form.price.data
+                image=form.image.data
             )
+
+            file = request.files['image']
+            if file.filename == '':
+                flash("No Image Provided")
+                return render_template('add_item.html', form=form)
+            
             db.session.add(item)
         flash("Item added successfully")
     else: flash(form.errors, 'error')
