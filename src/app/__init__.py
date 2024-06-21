@@ -6,9 +6,12 @@ import os
 
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://kyler:icedog@localhost/tlb'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    if SQLALCHEMY_DATABASE_URI and SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST = os.path.join(os.getcwd(), 'static/photos')
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback_secret_key')
 
 print("Photos DIR: ", os.path.join(os.getcwd(), 'static/photos'))
 print("Work DIR: ", os.getcwd())
