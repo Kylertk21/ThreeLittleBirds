@@ -9,13 +9,14 @@
     </head>
     <body>
         <h1>Add Items To Catalog</h1>
-        <form action="{{ url_for('add_item') }}" method="POST">
+        <form action="{{ url_for('add_item') }}" method="POST" enctype="multipart/form-data">
             <fieldset class ="add_item">
                 {{form.csrf_token}}
                 {{form.name.label}} {{form.name}}
                 {{form.quantity.label}} {{form.quantity}}
                 {{form.description.label}} {{form.description}}
                 {{form.price.label}} {{form.price}}
+                {{form.image}}
                 {{form.submit}}
             </fieldset>
         </form>

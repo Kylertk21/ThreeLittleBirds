@@ -3,6 +3,8 @@ from flask import render_template, url_for, request, flash
 from .forms import ItemForm
 from .models import Item
 import uuid
+from werkzeug.utils import secure_filename
+import os
 
 @app.route('/')
 def index():
@@ -18,24 +20,38 @@ def add_item():
     form = ItemForm()
     if request.method =='POST':
         if form.validate_on_submit():
-            item = Item(
-                id=str(uuid.uuid4()),
-                name=form.name.data,
-                quantity=form.quantity.data,
-                description=form.description.data,
-                price=form.price.data
-                image=form.image.data
-            )
+            try:
+                item = Item(
+                    id=str(uuid.uuid4()),
+                    name=form.name.data,
+                    quantity=form.quantity.data,
+                    description=form.description.data,
+                    price=form.price.data,
+                    image=form.image.data
+                )
 
-            file = request.files['image']
-            if file.filename == '':
-                flash("No Image Provided")
+                file = request.files['image']
+                if file.filename == '':
+                    flash("No Image Provided")
+                    return render_template('add_item.html', form=form)
+                if file:
+                    filename = secure_filename(file.filename)
+                    file_path = os.path.join(
+                        app.config['UPLOADED_PHOTOS_DEST'], filename)
+                    file.save(file_path)
+                    file_url = url_for('static', filename=f'photos/{filename}')
+                    item.image = file_url
+                
+                db.session.add(item)
+                db.session.commit()
+                flash("Item added successfully")
                 return render_template('add_item.html', form=form)
-            
-            db.session.add(item)
-        flash("Item added successfully")
-    else: flash(form.errors, 'error')
-    db.session.commit()
+
+            except Exception as e:
+                flash(f"Error adding item: {str(e)}", "error")
+                db.session.rollback()
+    
+        else: flash(form.errors, 'error')
     return render_template('add_item.html', form=form)
 
 @app.route('/orderform')
