@@ -8,17 +8,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Marketplace</title>
         <style>
-            .head{
-                height:150px;
-                width:270px;
-                padding: 5px; 
-            }
         </style>
     </head>
         <body>
-            <div class="head">
-            <h1 class="markettitle">Marketplace</h1>
-            <h2><a href="{{ url_for('index') }}">Home</a></h2>
+            <div class="markethead">
+                <h1 class="markettitle">Marketplace</h1>
+                <div class="head-btn">
+                    <form method="get" action="{{ url_for('index') }}">
+                        <button type="submit">Home</button>
+                    </form>
+                    <form method="get" action="{{ url_for('add_item')}}">
+                        <button class="admin" type="submit">Add Item (admin)</button>
+                    </form>
+                        <!--Should only be accessible by admin users-->
+                </div>
             </div>
         <div class="catalog">
             {% for item in items %}
