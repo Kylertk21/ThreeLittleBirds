@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block main %}
+<!DOCTYPE 'html'>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Services</title>
+    </head>
+    <body>
+        <h1>Home Decor Services</h1>
+        <div class="head-btn">
+            <form method="get" action="{{ url_for('index') }}">
+                <button type="submit">Home</button>
+            </form>
+        </div>
+        <div class="service-form">
+            <form action="{{ url_for('services') }}" method="POST" enctype="multipart/form-data">
+                <fieldset class ="add_item">
+                    {{form.csrf_token}}
+                    {{form.name.label}} {{form.name}}
+                    {{form.address.label}} {{form.address}}
+                    {{form.service.label}} {{form.service}}
+                    {{form.submit}}
+                </fieldset>
+            </form>
+            </form>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

@@ -9,3 +9,10 @@ class ItemForm(FlaskForm):
     price = DecimalField('Price', validators=[DataRequired()])
     submit = SubmitField('Submit')
     image = FileField('Image')
+
+class ServiceForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()], render_kw={"class": "form-control"})
+    address = StringField('Address', validators=[DataRequired()], render_kw={"class": "form-control"})
+    service = StringField('Service', validators=[DataRequired()], render_kw={"class": "form-control"})
+    phone = StringField('Phone', validators=[DataRequired()], render_kw={"class": "form-control"})
+    submit = SubmitField('Submit', render_kw={"class": "btn btn-primary"})

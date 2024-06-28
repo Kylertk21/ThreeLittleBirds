@@ -64,7 +64,8 @@ body{
     top: 0;
     left: 50%; 
     padding-bottom: 10px;
-    transform: translatex(-50%)
+    transform: translatex(-50%);
+    z-index: 1000;
 }
 .markettitle{
     letter-spacing: .5px;
@@ -157,7 +158,9 @@ a:active{
     align-items: center;
     gap: 16px; 
     max-width: 700px; 
-    margin: 0 auto; 
+    margin: 200px auto; 
+    position: relative;
+    z-index: 1;
     padding: 20px 10px;
 }
 
@@ -240,6 +243,10 @@ a:active{
     height:120%; 
     object-fit: cover;   
     
+}
+
+.form-control{
+    border: 2px solid red; 
 }
 
 

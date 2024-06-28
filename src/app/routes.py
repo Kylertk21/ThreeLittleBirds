@@ -1,7 +1,7 @@
 from . import app, db
 from flask import render_template, url_for, request, flash
-from .forms import ItemForm
-from .models import Item
+from .forms import ItemForm, ServiceForm
+from .models import Item, Service
 import uuid
 from werkzeug.utils import secure_filename
 import os
@@ -60,7 +60,27 @@ def orderform():
 
 @app.route('/services')
 def services():
-    return render_template('services.html')
+    form = ServiceForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            try:
+                service = Service(
+                    id=str(uuid.uuid4()),
+                    name=name,
+                    address=address,
+                    service=service,
+                    phone=phone
+                )
+                db.session.add(service)
+                db.session.commit()
+                flash("Service Request Submitted")
+                return render_template('services.html', form=form)
+            except Exception as e:
+                flash(f"Error submitting form: {str(e)}", "error")
+                db.session.rollback()
+        else:
+            flash(form.errors, 'error')
+    return render_template('services.html', form=form)
 
 @app.route('/contact')
 def contact():
